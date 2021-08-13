@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+"discord.py" = {extras = ["voice"], version = "*"}
+azure-cognitiveservices-vision-computervision = "*"
+firebase-admin = "*"
+coloredlogs = "*"
+python-dotenv = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+dev = "nodemon --exec python subjugation_bot.py"
