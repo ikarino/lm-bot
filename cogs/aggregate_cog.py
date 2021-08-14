@@ -27,6 +27,9 @@ class AggregateCog(commands.Cog):
             return 
         msg = ctx.message
         name = msg.author # msg.nick if msg.nick else msg.name
+        if not msg.attachments:
+            await ctx.send("画像が添付されてないよ〜\nパワーランキング画像をplayerコマンドと一緒に添付して下さい。")
+            return
         urls = [att.url for att in msg.attachments]
         await ctx.send(f'パワーランキング画像を受け取りました！参加者リストを作成中です')
 
@@ -50,6 +53,9 @@ class AggregateCog(commands.Cog):
         if ctx.channel.id not in CHANNEL_AGGREGATES:
             return 
         msg = ctx.message
+        if not msg.attachments:
+            await ctx.send("画像が添付されてないよ〜\nギフト画像をagiftコマンドと一緒に添付して下さい。")
+            return
         urls = [att.url for att in msg.attachments]
         await ctx.send(f'ギフト画像を受け取りました！追加中です')
 

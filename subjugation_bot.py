@@ -1,6 +1,6 @@
-# https://qiita.com/Lazialize/items/81f1430d9cd57fbd82fb
 from discord.ext import commands
 from dotenv import load_dotenv
+import discord
 
 import os
 import traceback
@@ -8,10 +8,9 @@ from firestore import MyFirestore
 
 load_dotenv(override=True)
 
-# 読み込むコグの名前を格納しておく。
 INITIAL_EXTENSIONS = [
     'cogs.aggregate_cog',
-    'cogs.hephbot_cog',
+    'cogs.utility_cog',
 ]
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 
@@ -31,6 +30,12 @@ class SubjugationBot(commands.Bot):
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.errors.CommandNotFound):
             await ctx.send("知らないコマンドだよ")
+        elif isinstance(error, commands.errors.CommandInvokeError):
+            await ctx.send(embed=discord.Embed(
+                title="処理例外が発生しました",
+                description=error,
+                colour=discord.Colour.red()
+            ))
 
     
 if __name__ == "__main__":

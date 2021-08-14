@@ -9,6 +9,8 @@ azure-cognitiveservices-vision-computervision = "*"
 firebase-admin = "*"
 coloredlogs = "*"
 python-dotenv = "*"
+requests = "*"
+beautifulsoup4 = "*"
 
 [dev-packages]
 
